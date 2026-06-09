@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --dark-pink: #EA718E;
+  --normal-pink: #F17694;
+  --light-pink: #FF96A2;
+  --cream: #FEECDF;
+  --dark-cream: #F7DAC8;
+  --base-white: #FCFBFC;
+  --base-black: #1D1D1D;
+}
+
+@theme inline {
+  --color-dpink: var(--dark-pink);
+  --color-npink: var(--normal-pink);
+  --color-lpink: var(--light-pink);
+  --color-cream: var(--cream);
+  --color-dcrm: var(--dark-cream);
+  --color-bswhite: var(--base-white);
+  --color-bsblack: var(--base-black);
+  --font-pop: var(--font-poppins);
+  --font-fred: var(--font-fredoka);
+}
+
