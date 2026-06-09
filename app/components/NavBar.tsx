@@ -42,7 +42,7 @@ export default function Navbar() {
               OUR STORY
               <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-dpink transition-all duration-300 group-hover/item:w-full group-hover/item:left-0" />
             </Link>
-            <Link href="/boutique" className="hover:text-dpink transition-colors relative py-1 group/item">
+            <Link href="/info" className="hover:text-dpink transition-colors relative py-1 group/item">
               RETAIL & FAQS
               <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-dpink transition-all duration-300 group-hover/item:w-full group-hover/item:left-0" />
             </Link>
@@ -106,7 +106,7 @@ export default function Navbar() {
                 <span>OUR STORY</span> <FiArrowUpRight />
               </Link>
               <Link 
-                href="/boutique" 
+                href="/info" 
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-3 rounded-xl hover:bg-crm hover:text-dpink transition-colors flex items-center justify-between"
               >
