@@ -30,12 +30,12 @@ export default function Footer() {
 
           {/* Directory Column */}
           <div className="md:col-span-3 space-y-4 text-center md:text-left">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-dpink">Directory Map</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-dpink">Website Structure</h4>
             <ul className="space-y-3 text-xs font-bold text-bsblack/70 uppercase tracking-wider">
               <li><Link href="/products" className="hover:text-npink transition-colors">Product Lineups</Link></li>
               <li><Link href="/live" className="hover:text-npink transition-colors">TikTok Portal</Link></li>
               <li><Link href="/about" className="hover:text-npink transition-colors">Our History</Link></li>
-              <li><Link href="/boutique" className="hover:text-npink transition-colors">Concept Space</Link></li>
+              <li><Link href="/boutique" className="hover:text-npink transition-colors">Retail and FAQs</Link></li>
             </ul>
           </div>
 
@@ -54,13 +54,13 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold tracking-widest text-bsblack/40 uppercase">
           <p>© 2026 cornelia charms. Handcrafted with precision and love.</p>
           <div className="flex space-x-5 text-bsblack/40">
-            <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:text-dpink transition-colors">
+            <a href="https://www.tiktok.com/@corneliacharmsph" target="_blank" rel="noreferrer" className="hover:text-dpink transition-colors">
               <FaTiktok size={15} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-dpink transition-colors">
+            <a href="https://www.instagram.com/corneliacharmsph" target="_blank" rel="noreferrer" className="hover:text-dpink transition-colors">
               <FaInstagram size={16} />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-dpink transition-colors">
+            <a href="https://facebook.com/nnejjjj" target="_blank" rel="noreferrer" className="hover:text-dpink transition-colors">
               <FaFacebookF size={15} />
             </a>
           </div>

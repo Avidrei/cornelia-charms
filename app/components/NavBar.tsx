@@ -10,7 +10,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    /* Changed to fixed so it stays attached to the viewport window as you scroll down the page */
+    
     <div className="fixed top-0 z-50 w-full px-4 pt-4 sm:px-6 lg:px-8">
       {/* Frosted Glass Floating Vessel */}
       <header className="mx-auto max-w-7xl rounded-full border border-lpink/30 bg-bswhite/40 px-6 py-3 shadow-[0_8px_32px_0_rgba(241,118,148,0.15)] backdrop-blur-xl transition-all duration-300 hover:border-dpink/40 group/nav">
@@ -28,7 +28,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Link Ribbons - Set to xl:flex to prevent iPad overlay issues */}
+          {/* Desktop Navigation Link Ribbons */}
           <nav className="hidden xl:flex items-center space-x-8 text-xs font-bold tracking-[0.2em] text-npink">
             <Link href="/products" className="hover:text-dpink transition-colors relative py-1 group/item">
               PRODUCT LINEUPS
