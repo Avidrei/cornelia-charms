@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Desktop Management Key Trigger - Shifted to xl:flex for uniform scaling */}
           <div className="hidden xl:flex items-center">
             <Link 
-              href="/admin-portal" 
+              href="/login" 
               className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-npink to-dpink px-6 py-2 text-xs font-bold tracking-widest text-bswhite shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.03] overflow-hidden group/btn"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-dpink to-npink opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 ease-out" />
