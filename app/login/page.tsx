@@ -28,7 +28,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-[#FFFDFB] font-pop text-bsblack">
       <Navbar />
 
-      <main className="flex items-center justify-center min-h-[80vh] px-6 py-12">
+      <main className="flex items-center justify-center min-h-[80vh] px-6 pb-12 pt-30">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
