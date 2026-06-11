@@ -3,24 +3,42 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import Navbar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { login } from './actions'; // Import your secure Supabase server action
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-  const handleTempLogin = () => {
-    // Temporary Logic for demonstration
-    if (email === 'test@cornelia.com' && password === 'charm123') {
-      setFeedback('Success! Redirecting to dashboard...');
-      // Simulate redirect after successful login
+  const handleLiveLogin = async (e: React.FormEvent) => {
+    if (e) e.preventDefault();
+    setIsLoading(true);
+    setFeedback('');
+
+    // Package the raw UI states into a standard browser FormData layout
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+
+    // Ship credentials directly to your server action handler
+    const result = await login(formData);
+
+    if (result.success) {
+      setFeedback('✨ Success! Welcome back, momsh! Redirecting...');
+      
+      // Allow browser cookies to settle perfectly, then route inwards
       setTimeout(() => {
-        window.location.href = '/dashboard'; // Change to your actual dashboard route
-      }, 1500);
+        router.push('/dashboard');
+        router.refresh();
+      }, 1200);
     } else {
-      setFeedback('Use test@cornelia.com / charm123 to enter!');
+      setFeedback(`❌ ${result.message}`);
+      setIsLoading(false);
     }
   };
 
@@ -49,46 +67,57 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Right Side: Login Form */}
+          {/* Right Side: Secure Login Form Panel */}
           <div className="flex-1 p-10 md:p-16 flex flex-col justify-center">
             <h1 className="text-3xl font-black font-fred uppercase mb-2">Log In To Your Account</h1>
             <p className="text-xs text-bsblack/50 mb-8 font-medium">Welcome back, momsh!</p>
 
-            <div className="space-y-4">
+            <form onSubmit={handleLiveLogin} className="space-y-4">
               <div>
                 <label className="text-[10px] font-bold uppercase tracking-widest text-bsblack/70 ml-1">Email</label>
                 <input 
                   type="email" 
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white border border-dcrm rounded-2xl px-4 py-3 mt-1 outline-none focus:border-dpink shadow-sm"
+                  className="w-full bg-white border border-dcrm rounded-2xl px-4 py-3 mt-1 outline-none focus:border-dpink shadow-sm text-xs font-medium text-bsblack transition-all"
                   placeholder="test@cornelia.com"
+                  disabled={isLoading}
                 />
               </div>
               <div>
                 <label className="text-[10px] font-bold uppercase tracking-widest text-bsblack/70 ml-1">Password</label>
                 <input 
                   type="password" 
+                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-white border border-dcrm rounded-2xl px-4 py-3 mt-1 outline-none focus:border-dpink shadow-sm"
-                  placeholder="charm123"
+                  className="w-full bg-white border border-dcrm rounded-2xl px-4 py-3 mt-1 outline-none focus:border-dpink shadow-sm text-xs font-medium text-bsblack transition-all"
+                  placeholder="••••••••"
+                  disabled={isLoading}
                 />
               </div>
 
               <button 
-                onClick={handleTempLogin}
-                className="w-full bg-bsblack text-white py-4 rounded-2xl font-bold font-fred uppercase text-sm hover:bg-dpink transition-all hover:scale-[1.01] shadow-md mt-6"
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-bsblack text-white py-4 rounded-2xl font-bold font-fred uppercase text-sm hover:bg-dpink transition-all hover:scale-[1.01] shadow-md mt-6 disabled:opacity-50 select-none active:scale-98"
               >
-                Sign In
+                {isLoading ? 'Verifying Profile...' : 'Sign In'}
               </button>
               
               {feedback && (
-                <p className={`text-[10px] font-bold text-center ${feedback.includes('Success') ? 'text-green-500' : 'text-dpink'}`}>
+                <motion.p 
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`text-[10px] font-bold text-center mt-3 uppercase tracking-wide font-fred ${
+                    feedback.includes('Success') ? 'text-green-500' : 'text-dpink'
+                  }`}
+                >
                   {feedback}
-                </p>
+                </motion.p>
               )}
-            </div>
+            </form>
           </div>
         </motion.div>
       </main>
